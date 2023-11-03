@@ -54,7 +54,7 @@
             if (customText) {
                 // カスタムテキストが入力されている場合、それをリダイレクト先とする
                 const encodedText = encodeURIComponent(customText);
-                const finalRedirectLink = `https://liff-tool.f5.si/?text=${encodedText}`;
+                const finalRedirectLink = `line://share?text=${encodedText}`;
                 window.location.href = finalRedirectLink;
                 return; // リダイレクトを終了
             }
