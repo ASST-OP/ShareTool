@@ -23,6 +23,11 @@
             border-radius: 20px;
         }
 
+        p {
+         padding: 5px 5px;
+         font-size: 5px;
+        }
+
         #version {
             position: fixed;
             bottom: 10px;
@@ -30,6 +35,7 @@
             font-size: 16px;
             color: gray;
             }
+
         .contentu{
         backroud-color: white;
         margin: 10px auto;
@@ -42,6 +48,7 @@
         height: 100vh; /* 画面の高さいっぱいに要素を中央寄せする場合 */
         flex-direction: column; /* 要素を縦に配置 */
         }
+
         .waku{
         backroud-color: white;
         margin: 10px auto;
@@ -63,6 +70,7 @@
     <input type="text" id="customText">
     <input type="number" id="redirectInterval" placeholder="共有と共有の間隔（秒）">
     <input type="number" id="redirectCount" placeholder="共有する回数">
+    <p>　</p>
     <button id="startRedirectButton">半自動共有開始</button>
     <button id="stopRedirectButton">半自動共有停止</button>
     <div id="version">ver. 0.80</div>
