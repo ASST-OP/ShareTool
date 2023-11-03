@@ -9,25 +9,26 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100vh;
-        border: 2px solid #000; /* 9x16の枠線を追加 */
-        border-radius: 9px; /* 角を丸く */
+        height: 75vh; /* 画面の高さの75% */
+        width: 75vw; /* 画面の幅の75% */
+        border: 1.5px solid #000;
+        border-radius: 9px;
     }
 
     select, input {
         padding: 20px;
         font-size: 32px;
         margin: 20px;
-        border: 2px solid #000;
-        border-radius: 9px; /* 各要素の角を丸く */
+        border: 1.5px solid #000;
+        border-radius: 9px;
     }
 
     button {
         padding: 20px 40px;
         font-size: 32px;
         cursor: pointer;
-        border: 2px solid #000;
-        border-radius: 9px; /* 各要素の角を丸く */
+        border: 1.5px solid #000;
+        border-radius: 9px;
     }
     </style>
 </head>
@@ -47,26 +48,37 @@
         let remainingRedirects;
 
         document.getElementById("startRedirectButton").addEventListener("click", function() {
-            const redirectLink = document.getElementById("redirectSelect").value;
-            const redirectInterval = parseInt(document.getElementById("redirectInterval").value) * 1000;
-            remainingRedirects = parseInt(document.getElementById("redirectCount").value);
+    const redirectLink = document.getElementById("redirectSelect").value;
+    const redirectInterval = parseInt(document.getElementById("redirectInterval").value) * 1000;
 
-            if (redirectInterval > 0 && remainingRedirects >= 0) {
-                redirectTimer = setInterval(function() {
-                    if (remainingRedirects === 0) {
-                        clearInterval(redirectTimer);
-                        alert("共有が終了しました。");
-                    } else {
-                        window.location.href = redirectLink;
-                        remainingRedirects--;
-                    }
-                }, redirectInterval);
+    // リダイレクト回数の取得
+    const redirectCountInput = document.getElementById("redirectCount");
+    let remainingRedirects;
 
-                alert("共有が開始されました。");
+    if (redirectCountInput.value === "") {
+        remainingRedirects = -1; // 未入力の場合、半永久的にリダイレクト
+    } else {
+        remainingRedirects = parseInt(redirectCountInput.value);
+    }
+
+    if (redirectInterval > 0) {
+        redirectTimer = setInterval(function() {
+            if (remainingRedirects === 0) {
+                clearInterval(redirectTimer);
+                alert("リダイレクトが終了しました。");
             } else {
-                alert("共有する間隔とリダイレクト回数を正しく設定してください。");
+                window.location.href = redirectLink;
+                if (remainingRedirects > 0) {
+                    remainingRedirects--;
+                }
             }
-        });
+        }, redirectInterval);
+
+        alert("リダイレクトが開始されました。");
+    } else {
+        alert("リダイレクト間隔を正しく設定してください。");
+    }
+});
 
         document.getElementById("stopRedirectButton").addEventListener("click", function() {
             clearInterval(redirectTimer);
