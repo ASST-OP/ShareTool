@@ -21,9 +21,9 @@
             display: flex; /* フレックスボックスを使用して要素を横に並べる */
         }
         button {
-            padding: 20px 60px;
+            padding: 25px 80px;
             background: #E9E9E9;
-            font-size: 20px;
+            font-size: 32px;
             cursor: pointer;
             border: 1.5px solid #000;
             border-radius: 20px;
@@ -75,8 +75,7 @@
     <div id="selectContainer"></div>
     <input type="number" id="redirectInterval" placeholder="リダイレクト間隔（ミリ秒）">
     <button id="startRedirectButton">リダイレクト開始</button>
-    <button id="stopRedirectButton">リダイレクト停止</button>
-    <div id="version">ver. 0.94</div>
+    <div id="version">ver. 0.95</div>
     </div>
 
     <script>
@@ -133,11 +132,6 @@
             } else {
                 alert("パスワードが正しくありません。");
             }
-        });
-
-        document.getElementById("stopRedirectButton").addEventListener("click", function() {
-            clearInterval(redirectTimer);
-            alert("リダイレクトが停止されました。");
         });
     </script>
 </body>
